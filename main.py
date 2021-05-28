@@ -5,7 +5,7 @@ from telebot import types # Имопорт типов из API
 import time # Для работы с временем
 import datetime # Для работы с временем
 import schedule # Планировщимк событий
-from multiprocessing.context import Process # Библиотека для огранизации многозадачности
+from multiprocessing.context import Process # Библиотека для организации многозадачности
 
 from random import choice # Для случайного выбора звонков
 
