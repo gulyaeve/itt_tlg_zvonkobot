@@ -15,6 +15,7 @@ from utils import file_system, tools # Файлы с дополнительны�
 def timeReg(time, user):
     # Назначение задач по дням недели (для вызова в другой функции)
     # Аргументы: время и id пользователя
+    schedule.clear()
     schedule.every().monday.at(str(time)).do(sendCall, userID=user)
     schedule.every().tuesday.at(str(time)).do(sendCall, userID=user)
     schedule.every().wednesday.at(str(time)).do(sendCall, userID=user)
@@ -144,7 +145,9 @@ def get_text_messages(message):
 
 # Отправка сообщения о звонке
 def sendCall(userID):
-    bot.send_message(userID, choice(file_system.read('messages')['TO_LESSON']))
+    message = choice(file_system.read('messages')['TO_LESSON'])
+    bot.send_message(userID, message)
+    file_system.log("log", f"Пользователю {userID} отправлено сообщение {message} в {datetime.datetime.now()}")
 
 # Настройка многозадачности
 journal()
