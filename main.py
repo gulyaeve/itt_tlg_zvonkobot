@@ -15,7 +15,6 @@ from utils import file_system, tools # Файлы с дополнительны�
 def timeReg(time, user):
     # Назначение задач по дням недели (для вызова в другой функции)
     # Аргументы: время и id пользователя
-    schedule.clear()
     schedule.every().monday.at(str(time)).do(sendCall, userID=user)
     schedule.every().tuesday.at(str(time)).do(sendCall, userID=user)
     schedule.every().wednesday.at(str(time)).do(sendCall, userID=user)
@@ -24,6 +23,7 @@ def timeReg(time, user):
 
 def journal():
     # Обновление планировщика
+    schedule.clear()
     for user_id in file_system.read('users'):
         user = file_system.read('users')[user_id]
         for grade in tools.times:
