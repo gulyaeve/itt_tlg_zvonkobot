@@ -147,7 +147,7 @@ def get_text_messages(message):
 def sendCall(userID):
     message = choice(file_system.read('messages')['TO_LESSON'])
     bot.send_message(userID, message)
-    file_system.log("log", f"Пользователю {userID} отправлено сообщение {message} в {datetime.datetime.now()}")
+    file_system.log("log", f"Пользователю {userID} из {file_system.read('users')[str(message.from_user.id)]['grade']} отправлено сообщение {message} в {datetime.datetime.now()}")
 
 # Настройка многозадачности
 journal()
